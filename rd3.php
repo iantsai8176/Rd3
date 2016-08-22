@@ -61,19 +61,22 @@ for ($i=0;$i<10;$i++) {
     }
 }
 $c = 0;
-echo "<table border = '1'>";
-foreach ($array as $a) {
-    echo "<tr>";
-    foreach ($a as $b) {
-        echo "<td>$b</td>";
-    }
-    echo "</tr>";
-}
-echo "</table>";
+// echo "<table border = '1'>";
+// foreach ($array as $a) {
+//     echo "<tr>";
+//     foreach ($a as $b) {
+//         echo "<td>$b</td>";
+//     }
+//     echo "</tr>";
+// }
+// echo "</table>";
 
 foreach ($array as $a) {
     foreach ($a as $b) {
         echo $b;
     }
-
+    $c += 1;
+    if ($c <10) {
+        echo "N";
+    }
 }
