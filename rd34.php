@@ -23,7 +23,6 @@ do{
     }
     $k++;
 }while($row > $k);
-var_dump($long);
 if (preg_match("/^([0-9A-Z]+)$/",$origenal) == '0'){
     echo '炸彈必須是大寫字母或有意外字元存在<br>';
     $checkResult = false;
@@ -114,12 +113,12 @@ if ($checkResult == false) {
     echo '符合';
 }
 
-echo "<table border = '1'>";
-foreach ($checkArray as $a) {
-    echo "<tr>";
-    foreach ($a as $b) {
-        echo "<td>$b</td>";
-    }
-    echo "</tr>";
-}
-echo "</table>";
+// echo "<table border = '1'>";
+// foreach ($checkArray as $a) {
+//     echo "<tr>";
+//     foreach ($a as $b) {
+//         echo "<td>$b</td>";
+//     }
+//     echo "</tr>";
+// }
+// echo "</table>";
