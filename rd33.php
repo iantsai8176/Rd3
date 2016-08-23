@@ -76,7 +76,7 @@ foreach ($array as $a) {
         echo $b;
     }
     $c += 1;
-    if ($c <10) {
+    if ($c <50) {
         echo "N";
     }
 }
