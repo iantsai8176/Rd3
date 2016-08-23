@@ -1,6 +1,5 @@
 <?php
 $iTime = microtime(true);
-srand ((float)microtime()*1000000);
 $array[] = array();
 for ($i=0;$i<3000;$i++) {
         $bomb[$i] = $i;
@@ -82,5 +81,5 @@ foreach ($array as $a) {
     }
 }
 echo "<br>";
-$iTime2 = microtime(true);
-echo $iTime2-$iTime;
+// $iTime2 = microtime(true);
+// echo $iTime2-$iTime;
