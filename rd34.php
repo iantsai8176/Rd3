@@ -18,22 +18,23 @@ $checkResult = true;
 do{
     if (strlen($check[$k]) != $column) {
         $returnRespond = true;
+        $temp = strlen($check[$k]);
         break;
     }
     $k++;
 }while($row > $k);
-
+var_dump($long);
 if (preg_match("/^([0-9A-Z]+)$/",$origenal) == '0'){
     echo '炸彈必須是大寫字母或有意外字元存在<br>';
     $checkResult = false;
 }
 if ($returnRespond == true) {
-    echo "空行第'$k'個N不正確<br>";
+    echo "空行第'$k'個N位置不正確,列減少變為'$temp'<br>";
     $checkResult = false;
 }
 
 if ($long - $countN != $column * $row ) {
-    echo "長度不符<br>";
+    echo "長度不符,長度為'$long'<br>";
     $checkResult = false;
 }
 
@@ -112,3 +113,13 @@ if ($checkResult == false) {
 } else {
     echo '符合';
 }
+
+echo "<table border = '1'>";
+foreach ($checkArray as $a) {
+    echo "<tr>";
+    foreach ($a as $b) {
+        echo "<td>$b</td>";
+    }
+    echo "</tr>";
+}
+echo "</table>";
