@@ -11,3 +11,5 @@
 轉帳 transfer
 
 轉帳確認 checkTransfer
+
+API URL https://plc-kmygrock666.c9users.io/Rd3/rdApi.php/
