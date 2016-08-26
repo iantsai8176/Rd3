@@ -7,10 +7,14 @@ $action = preg_replace('/[^a-z0-9_]+/i','',array_shift($request));
 
 $actRequest = 'true';
 $user = $_GET['username'];
-$type = $_GET['type'];
-$amount = $_GET['amount'];
+$type = strtoupper($_GET['type']); //一律轉大寫
+$amount = abs($_GET['amount']); //負數轉正數
 $number = $_GET['number'];
 $lastNumber = date('is').rand(10,20);
+if ($action == "") {
+    echo "未輸入API名稱";
+    exit();
+}
 
 if ($action == 'addAccount') {
     if (is_numeric($user) || $user == "") {
@@ -30,7 +34,7 @@ if ($action == 'balance') {
 
 if ($action == 'transfer') {
     if ($user == "" || $type == "" || $amount == ""){
-        echo '參數不完整';
+        echo '參數有誤';
         exit();
     }
     $act = new action();
@@ -103,7 +107,7 @@ class Action {
         $db = $pdo->getConnect();
         $searchNumber = $db->query('SELECT * FROM `Detail` ORDER BY `number` desc limit 1');
         $row = $searchNumber->fetch();
-        if ($type == 'IN') {
+        if ($type === 'IN') {
             $deposit = $db->prepare('UPDATE `PlayStation` SET `balance` = `balance` + :amount, `lastNumber` = :lastNumber WHERE `account` = :user');
             $deposit->bindParam('amount', $amount,PDO::PARAM_INT,50);
             $deposit->bindParam('user', $user);
@@ -124,7 +128,7 @@ class Action {
             $changeSistuation->execute();
         }
 
-        if ($type == 'OUT') {
+        if ($type === 'OUT') {
             $checkBalance = $db->prepare('SELECT * FROM `PlayStation` WHERE `account` = :user');
             $checkBalance->bindParam('user', $user);
             $checkBalance->execute();
